@@ -1,0 +1,30 @@
+header{
+    width: 100%;
+    height:auto;
+    min-height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main{
+    width: 100%;
+    height: auto;
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: space-between;
+}
