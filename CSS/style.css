@@ -13,9 +13,19 @@ form{
     background-color: #999;
     padding: 40px;
     border-radius: 10px;
+    
+    transform: translateY(-35%);
 }
 
 .login-page{
     background-image: url('../Multimedia/Fondo-Cine.jpg');
     background-size:cover;
+
+    background-position: top center; /* Centra la imagen de fondo */
+    background-repeat: no-repeat;    /* Evita que se duplique */
+    width: 100%;
+}
+
+.login-body{
+    background-color: #000;
 }
