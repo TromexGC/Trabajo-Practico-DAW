@@ -8,13 +8,14 @@ header h1{
 body{
     background-color: #666;
 }
-
 form{
     background-color: #999;
     padding: 40px;
     border-radius: 10px;
-    
     transform: translateY(-35%);
+    /* Agrego sombra debajo del formulario */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35); 
+    
 }
 
 .login-page{
@@ -28,4 +29,22 @@ form{
 
 .login-body{
     background-color: #000;
+}
+
+.login-body::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    
+    background-image: url('../Multimedia/Foreground-Cortinas.png');
+    background-size: cover;
+    background-position: top center; /* Centra la imagen de fondo */
+    background-repeat: no-repeat;    /* Evita que se duplique */
+    z-index: 1; /* Asegura que el fondo esté detrás del contenido */
+    pointer-events: none; /* Permite que los clics pasen a través del fondo */
+    
 }
