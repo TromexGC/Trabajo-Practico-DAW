@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel básico - Películas</title>
+</head>
+<body>
+
+    <h1>Panel básico de películas</h1>
+
+    <p>Usuario logueado: <span id="usuario"></span></p>
+
+    <button id="btnListar">Listar películas</button>
+    <button id="btnLogout">Cerrar sesión</button>
+
+    <h2>Crear película</h2>
+
+    <form id="formCrearPelicula">
+        <input type="text" id="nombre" placeholder="Nombre" required>
+        <input type="text" id="descripcion" placeholder="Descripción" required>
+        <input type="text" id="genero" placeholder="Género">
+        <input type="text" id="director" placeholder="Director">
+        <input type="number" id="anio" placeholder="Año">
+        <button type="submit">Crear</button>
+    </form>
+
+    <h2>Editar película</h2>
+
+    <form id="formEditarPelicula">
+        <input type="number" id="editarId" placeholder="Id" required>
+        <input type="text" id="editarNombre" placeholder="Nuevo nombre" required>
+        <input type="text" id="editarDescripcion" placeholder="Nueva descripción" required>
+        <input type="text" id="editarGenero" placeholder="Nuevo género">
+        <input type="text" id="editarDirector" placeholder="Nuevo director">
+        <input type="number" id="editarAnio" placeholder="Nuevo año">
+        <button type="submit">Editar</button>
+    </form>
+
+    <h2>Borrar película</h2>
+
+    <form id="formBorrarPelicula">
+        <input type="number" id="borrarId" placeholder="Id de película" required>
+        <button type="submit">Borrar</button>
+    </form>
+
+    <h2>Listado</h2>
+    <div id="resultado"></div>
+
+    <script src="Scripts/backendService.js"></script>
+    <script src="Scripts/peliculas.js"></script>
+
+</body>
+</html>
