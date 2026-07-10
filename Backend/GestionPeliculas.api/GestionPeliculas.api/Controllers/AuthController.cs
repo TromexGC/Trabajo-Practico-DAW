@@ -191,5 +191,41 @@ namespace GestionPeliculas.api.Controllers
                 Privileges = privileges
             });
         }
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordRequest request)
+        {
+            if (string.IsNullOrWhiteSpace(request.Email) ||
+                string.IsNullOrWhiteSpace(request.NewPassword) ||
+                string.IsNullOrWhiteSpace(request.ConfirmPassword))
+            {
+                return BadRequest("Todos los campos son obligatorios.");
+            }
+
+            if (request.NewPassword != request.ConfirmPassword)
+            {
+                return BadRequest("Las contraseñas no coinciden.");
+            }
+
+            var user = await _context.Users
+                .FirstOrDefaultAsync(u => u.Email == request.Email && u.IsActive);
+
+            if (user == null)
+            {
+                return NotFound("No existe un usuario activo con ese email.");
+            }
+
+            var salt = _passwordService.GenerateSalt();
+            var hash = _passwordService.HashPassword(request.NewPassword, salt);
+
+            user.Salt = salt;
+            user.PasswordHash = hash;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                message = "Contraseña actualizada correctamente."
+            });
+        }
     }
 }

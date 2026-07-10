@@ -134,3 +134,7 @@ async function assignPrivileges(id, privileges) {
         privileges
     });
 }
+
+async function getAuditLogs() {
+    return await apiRequest("/Audit", "GET");
+}

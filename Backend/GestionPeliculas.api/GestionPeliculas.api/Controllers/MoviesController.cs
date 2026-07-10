@@ -3,6 +3,8 @@ using GestionPeliculas.api.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
+using GestionPeliculas.api.Services;
 
 namespace GestionPeliculas.api.Controllers
 {
@@ -12,10 +14,15 @@ namespace GestionPeliculas.api.Controllers
     public class MoviesController : ControllerBase
     {
         private readonly AppDbContext _context;
-
-        public MoviesController(AppDbContext context)
+        private readonly AuditService _auditService;
+        public MoviesController(AppDbContext context, AuditService auditService)
         {
             _context = context;
+            _auditService = auditService;
+        }
+        private string GetCurrentUserName()
+        {
+            return User.FindFirst(ClaimTypes.Name)?.Value ?? "Usuario desconocido";
         }
 
         private bool HasPrivilege(string privilege)
@@ -79,6 +86,10 @@ namespace GestionPeliculas.api.Controllers
 
             _context.Movies.Add(movie);
             await _context.SaveChangesAsync();
+            await _auditService.RegistrarAccion(
+                        GetCurrentUserName(),
+                        $"Creó la película: {movie.Nombre}"
+              );
 
             return Ok(movie);
         }
@@ -116,6 +127,10 @@ namespace GestionPeliculas.api.Controllers
             existingMovie.Anio = movie.Anio;
 
             await _context.SaveChangesAsync();
+            await _auditService.RegistrarAccion(
+                GetCurrentUserName(),
+                $"Editó la película: {existingMovie.Nombre}"
+            );
 
             return Ok(existingMovie);
         }
@@ -137,6 +152,10 @@ namespace GestionPeliculas.api.Controllers
 
             movie.IsActive = false;
             await _context.SaveChangesAsync();
+            await _auditService.RegistrarAccion(
+                GetCurrentUserName(),
+                $"Dio de baja la película: {movie.Nombre}"
+            );
 
             return Ok("Película dada de baja correctamente");
         }

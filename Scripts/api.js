@@ -95,3 +95,45 @@ registerForm.addEventListener("submit", async function (event) {
         alert("No se pudo conectar con la API");
     }
 });
+async function resetPassword(email, newPassword, confirmPassword) {
+    const response = await fetch(`${API_URL}/Auth/reset-password`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email: email,
+            newPassword: newPassword,
+            confirmPassword: confirmPassword
+        })
+    });
+
+    if (!response.ok) {
+        const error = await response.text();
+        throw new Error(error);
+    }
+
+    return await response.json();
+}
+const forgotPasswordForm = document.getElementById("forgot-password-form");
+
+if (forgotPasswordForm) {
+    forgotPasswordForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const email = document.getElementById("forgot-email").value;
+        const newPassword = document.getElementById("forgot-new-password").value;
+        const confirmPassword = document.getElementById("forgot-confirm-password").value;
+
+        try {
+            await resetPassword(email, newPassword, confirmPassword);
+
+            alert("Contraseña actualizada correctamente. Ya podés iniciar sesión.");
+
+            forgotPasswordForm.reset();
+
+        } catch (error) {
+            alert(error.message);
+        }
+    });
+}

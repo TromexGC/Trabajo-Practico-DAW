@@ -25,6 +25,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddScoped<PasswordService>();
 builder.Services.AddScoped<TokenService>();
+builder.Services.AddScoped<AuditService>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

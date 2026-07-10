@@ -5,6 +5,8 @@ using GestionPeliculas.api.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
+using GestionPeliculas.api.Services;
 
 namespace GestionPeliculas.api.Controllers
 {
@@ -15,13 +17,18 @@ namespace GestionPeliculas.api.Controllers
     {
         private readonly AppDbContext _context;
         private readonly PasswordService _passwordService;
+        private readonly AuditService _auditService;
 
-        public UsersController(AppDbContext context, PasswordService passwordService)
+        public UsersController(AppDbContext context, PasswordService passwordService, AuditService auditService)
         {
             _context = context;
             _passwordService = passwordService;
+            _auditService = auditService;
         }
-
+        private string GetCurrentUserName()
+        {
+            return User.FindFirst(ClaimTypes.Name)?.Value ?? "Usuario desconocido";
+        }
         private bool HasPrivilege(string privilege)
         {
             return User.Claims.Any(c => c.Type == "privilege" && c.Value == privilege);
@@ -126,7 +133,10 @@ namespace GestionPeliculas.api.Controllers
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
-
+            await _auditService.RegistrarAccion(
+                GetCurrentUserName(),
+                $"Creó el usuario: {user.UserName}"
+            );
             var requestedPrivileges = request.Privileges
                 .Distinct()
                 .ToList();
@@ -215,7 +225,10 @@ namespace GestionPeliculas.api.Controllers
             user.IsActive = request.IsActive;
 
             await _context.SaveChangesAsync();
-
+            await _auditService.RegistrarAccion(
+                GetCurrentUserName(),
+                $"Editó el usuario: {user.UserName}"
+            );
             return Ok(new
             {
                 user.Id,
@@ -243,6 +256,10 @@ namespace GestionPeliculas.api.Controllers
             user.IsActive = false;
 
             await _context.SaveChangesAsync();
+            await _auditService.RegistrarAccion(
+                GetCurrentUserName(),
+                $"Dio de baja el usuario: {user.UserName}"
+            );
 
             return Ok("Usuario dado de baja correctamente");
         }
@@ -320,6 +337,10 @@ namespace GestionPeliculas.api.Controllers
             }
 
             await _context.SaveChangesAsync();
+            await _auditService.RegistrarAccion(
+                GetCurrentUserName(),
+                $"Modificó los privilegios del usuario: {user.UserName}"
+            );
 
             return Ok(new
             {
