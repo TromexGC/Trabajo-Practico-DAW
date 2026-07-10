@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../CSS/reset.css">
+    <link rel="stylesheet" href="../CSS/display.css">
+    <link rel="stylesheet" href="../CSS/layout.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/responsive.css">
+
+    <link rel="icon" href="../Multimedia/cinetopia-logo.png" type="image/png">
+</head>
+<body>
+    <header>
+        <img src="../Multimedia/cinetopia-logo.png" alt="Logo de Cinetopia" class="logo">
+        <h1>Cinetopia</h1>
+        <div class="sandwitch">
+            <button id="btn-hamburguesa" class="hamburguesa" aria-label="Abrir menú" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav id="menu-lateral" class="menu-lateral">
+                <ul>
+                <li><a href="mis-entradas.html">Mis entradas vigentes</a></li>
+
+                <!-- Estos solo se muestran si tiene privilegios -->
+                <li class="solo-admin" hidden><a href="usuarios.html">Gestión de usuarios</a></li>
+                <li class="solo-admin" hidden><a href="privilegios.html">Gestión de privilegios</a></li>
+                <li class="solo-admin" hidden><a href="peliculas.html">Gestión de películas</a></li>
+
+                <li><a href="#" id="btn-logout">Cerrar sesión</a></li>
+                </ul>
+            </nav>
+
+            <div id="overlay-menu" class="overlay-menu" hidden></div>
+        </div>
+    </header>
+    <main>
+        <div class="home-container" id="contenedor-peliculas">
+            <!-- Aca se obtiene la lista de películas y se preparan para insertarse con un .innerHTML desde JS -->
+        </div>
+    </main>
+    <script src="../Scripts/hamburguesa.js"></script>
+</body>
+</html>
