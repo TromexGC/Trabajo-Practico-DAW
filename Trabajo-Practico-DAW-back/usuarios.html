@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios</title>
+
+    <link rel="stylesheet" href="CSS/reset.css">
+    <link rel="stylesheet" href="CSS/peliculas.css">
+</head>
+
+<body>
+
+    <header class="movies-header">
+        <h1>Gestión de Usuarios</h1>
+        <button id="btnVolver">Volver al Home</button>
+    </header>
+
+    <main class="movies-main">
+
+        <section class="user-info">
+            <p id="usuarioLogueado"></p>
+            <p id="rolUsuario"></p>
+        </section>
+
+        <section class="movies-card">
+            <h2>Crear usuario</h2>
+
+            <form id="formCrearUsuario" class="movies-form">
+                <div class="form-group">
+                    <label for="crearUserName">Usuario:</label>
+                    <input type="text" id="crearUserName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="crearEmail">Email:</label>
+                    <input type="email" id="crearEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="crearPassword">Contraseña:</label>
+                    <input type="password" id="crearPassword" required>
+                </div>
+
+                <h3>Privilegios</h3>
+                <div id="privilegiosCrear"></div>
+
+                <button type="submit">Crear usuario</button>
+            </form>
+        </section>
+
+        <section class="movies-card">
+            <h2>Listado de usuarios</h2>
+            <button id="btnListarUsuarios">Actualizar listado</button>
+
+            <table class="movies-table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Usuario</th>
+                        <th>Email</th>
+                        <th>Activo</th>
+                        <th>Privilegios</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaUsuarios">
+                </tbody>
+            </table>
+        </section>
+
+        <section class="movies-card" id="seccionEditarUsuario" hidden>
+            <h2>Editar usuario</h2>
+
+            <form id="formEditarUsuario" class="movies-form">
+                <div class="form-group">
+                    <label for="editarUserId">Id:</label>
+                    <input type="number" id="editarUserId" readonly required>
+                </div>
+
+                <div class="form-group">
+                    <label for="editarUserName">Usuario:</label>
+                    <input type="text" id="editarUserName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="editarEmail">Email:</label>
+                    <input type="email" id="editarEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="editarActivo">Activo:</label>
+                    <select id="editarActivo">
+                        <option value="true">Sí</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+
+                <button type="submit">Guardar cambios</button>
+            </form>
+        </section>
+
+        <section class="movies-card" id="seccionPrivilegiosUsuario" hidden>
+            <h2>Asignar privilegios</h2>
+
+            <p id="usuarioPrivilegiosSeleccionado"></p>
+
+            <form id="formAsignarPrivilegios" class="movies-form">
+                <input type="hidden" id="privilegiosUserId">
+
+                <div id="privilegiosAsignar"></div>
+
+                <button type="submit">Guardar privilegios</button>
+            </form>
+        </section>
+
+    </main>
+
+    <script src="Scripts/backendService.js"></script>
+    <script src="Scripts/usuarios.js"></script>
+
+</body>
+</html>
