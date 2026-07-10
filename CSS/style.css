@@ -48,3 +48,92 @@ form{
     pointer-events: none; /* Permite que los clics pasen a través del fondo */
     
 }
+
+.logo{
+    width: 100px;
+    height: auto;
+    margin-right: 20px;
+}
+
+/* Menu Hamburguesa */
+.hamburguesa {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 20px;
+}
+
+.hamburguesa span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #333;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* animación a "X" cuando está abierto */
+.hamburguesa.activo span:nth-child(1) {
+  transform: translateY(8.5px) rotate(45deg);
+}
+.hamburguesa.activo span:nth-child(2) {
+  opacity: 0;
+}
+.hamburguesa.activo span:nth-child(3) {
+  transform: translateY(-8.5px) rotate(-45deg);
+}
+
+.menu-lateral {
+  position: fixed;
+  top: 0;
+  right: -280px; /* arranca oculto fuera de pantalla */
+  width: 280px;
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+  transition: right 0.3s ease;
+  z-index: 1000;
+}
+
+.menu-lateral.abierto {
+  right: 0;
+}
+
+.menu-lateral ul {
+  list-style: none;
+  margin: 0;
+  padding: 60px 20px 20px;
+}
+
+.menu-lateral li {
+  margin-bottom: 12px;
+}
+
+.menu-lateral a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  display: block;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.menu-lateral a:hover {
+  background-color: #f0f0f0;
+}
+
+.overlay-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+}
