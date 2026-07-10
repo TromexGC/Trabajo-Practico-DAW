@@ -33,22 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
   overlay.addEventListener('click', cerrarMenu);
 
   btnLogout.addEventListener('click', (e) => {
-    e.preventDefault();
-    localStorage.removeItem('token'); // o el nombre que uses para guardar el token
-    window.location.href = 'login.html';
+  e.preventDefault();
+  localStorage.clear();
+  window.location.href = '../LogIn.html';
   });
 });
 
 function tienePrivilegios() {
-  // Placeholder: acá vas a decodificar el JWT o leer el dato guardado
-  // en localStorage/sessionStorage cuando confirmes con tu compañero
-  // el formato exacto del token.
-  const token = localStorage.getItem('token');
-  if (!token) return false;
-
-  // Ejemplo de cómo se vería decodificando un JWT (sin librerías):
-  // const payload = JSON.parse(atob(token.split('.')[1]));
-  // return payload.privileges && payload.privileges.length > 0;
-
-  return false; // por ahora, hardcodeado
+  const privileges = JSON.parse(localStorage.getItem('privileges') || '[]');
+  return privileges.includes('USERS_MANAGE');
 }

@@ -33,7 +33,7 @@ loginForm.addEventListener("submit", async function (event) {
         localStorage.setItem("privileges", JSON.stringify(data.privileges));
 
         alert("Login correcto");    
-        window.location.href = "peliculas.html";
+        window.location.href = "Pages/Home.html";
 
         console.log("Token:", data.token);
         console.log("Privilegios:", data.privileges);

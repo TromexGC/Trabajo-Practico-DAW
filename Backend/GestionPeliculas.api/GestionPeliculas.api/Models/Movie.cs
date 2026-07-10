@@ -14,6 +14,8 @@
 
         public int? Anio { get; set; }
 
+        public string? PosterUrl { get; set; }
+
         public bool IsActive { get; set; } = true;
     }
 }

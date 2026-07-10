@@ -112,6 +112,7 @@ namespace GestionPeliculas.api.Controllers
             existingMovie.Descripcion = movie.Descripcion;
             existingMovie.Genero = movie.Genero;
             existingMovie.Director = movie.Director;
+            existingMovie.PosterUrl = movie.PosterUrl;
             existingMovie.Anio = movie.Anio;
 
             await _context.SaveChangesAsync();

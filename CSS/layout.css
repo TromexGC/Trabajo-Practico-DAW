@@ -3,14 +3,9 @@ header{
     height:auto;
     min-height: 150px;
     display: flex;
-<<<<<<< HEAD
     justify-content: space-between;
-=======
-    justify-content: center;
->>>>>>> f74df71bdfbb19400bc6c4385e7231599db04698
     align-items: center;
 }
-
 main{
     width: 100%;
     height: auto;
