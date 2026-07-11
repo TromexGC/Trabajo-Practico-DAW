@@ -2,7 +2,7 @@ header{
     background-color: #850000;
 }
 header h1{
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
 }
 
 body{
@@ -47,4 +47,259 @@ form{
     z-index: 1; /* Asegura que el fondo esté detrás del contenido */
     pointer-events: none; /* Permite que los clics pasen a través del fondo */
     
+}
+
+.logo{
+    width: clamp(50px, 10vw, 100px);
+    height: auto;
+    margin-right: 20px;
+}
+
+/* Menu Hamburguesa */
+.hamburguesa {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 20px;
+}
+
+.hamburguesa span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #333;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* animación a "X" cuando está abierto */
+.hamburguesa.activo span:nth-child(1) {
+  transform: translateY(8.5px) rotate(45deg);
+}
+.hamburguesa.activo span:nth-child(2) {
+  opacity: 0;
+}
+.hamburguesa.activo span:nth-child(3) {
+  transform: translateY(-8.5px) rotate(-45deg);
+}
+
+.menu-lateral {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(280px, 85vw); /* nunca más ancho que el 85% de la pantalla */
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+  transform: translateX(100%); /* arranca oculto fuera de pantalla, sea cual sea su ancho */
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.menu-lateral.abierto {
+  transform: translateX(0);
+}
+
+.menu-lateral ul {
+  list-style: none;
+  margin: 0;
+  padding: 60px 20px 20px;
+}
+
+.menu-lateral li {
+  margin-bottom: 12px;
+}
+
+.menu-lateral a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  display: block;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.menu-lateral a:hover {
+  background-color: #f0f0f0;
+}
+
+.overlay-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+}
+
+.home-movies-section {
+    width: 90%;
+    margin: 30px auto;
+    background-color: #a0a0a0;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+}
+
+.home-movies-section h2 {
+    margin-bottom: 15px;
+}
+
+.home-main {
+    min-height: calc(100vh - 150px);
+    padding: 40px;
+    display: block;
+    background-color: #5f5f5f;
+}
+
+.home-welcome {
+    width: 90%;
+    margin: 0 auto 30px auto;
+    background-color: #a0a0a0;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+}
+
+.home-welcome h2 {
+    margin-bottom: 10px;
+}
+
+.home-movies-section {
+    width: 90%;
+    margin: 0 auto;
+    background-color: #a0a0a0;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+}
+
+.home-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.home-movies-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+}
+
+.home-movie-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.35);
+}
+
+.home-movie-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: #333;
+    display: block;
+    transition: filter 0.25s ease;
+}
+
+.home-movie-card-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.home-movie-card-overlay h3 {
+    color: white;
+    font-size: 18px;
+}
+
+.home-movie-card:hover img,
+.home-movie-card:focus-visible img {
+    filter: blur(4px);
+}
+
+.home-movie-card:hover .home-movie-card-overlay,
+.home-movie-card:focus-visible .home-movie-card-overlay {
+    opacity: 1;
+}
+
+/* ============ Modal de detalle de película ============ */
+
+.movie-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.movie-modal-overlay[hidden] {
+    display: none;
+}
+
+.movie-modal {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background-color: white;
+    color: black;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.movie-modal img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    display: block;
+}
+
+.movie-modal-content {
+    padding: 20px;
+}
+
+.movie-modal-content h2 {
+    margin-bottom: 10px;
+}
+
+.movie-modal-content p {
+    margin-bottom: 8px;
+}
+
+.movie-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
 }

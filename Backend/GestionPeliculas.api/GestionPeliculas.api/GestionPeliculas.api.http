@@ -1,0 +1,6 @@
+@GestionPeliculas.api_HostAddress = http://localhost:5183
+
+GET {{GestionPeliculas.api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

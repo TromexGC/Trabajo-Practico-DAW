@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Bitácora</title>
+
+    <link rel="stylesheet" href="../CSS/reset.css">
+    <link rel="stylesheet" href="../CSS/peliculas.css">
+    <link rel="stylesheet" href="../CSS/responsive.css">
+</head>
+<body>
+
+    <header class="movies-header">
+        <img src="../Multimedia/cinetopia-logo.png" alt="Logo de Cinetopia" class="logo">
+        <h1>Bitácora del Sistema</h1>
+        <button id="btnVolver">Volver al Home</button>
+    </header>
+
+    <main class="movies-main">
+
+        <section class="movies-card">
+            <h2>Acciones registradas</h2>
+
+            <button id="btnActualizarBitacora">Actualizar</button>
+
+            <table class="movies-table">
+                <thead>
+                    <tr>
+                        <th>Fecha y hora</th>
+                        <th>Usuario</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tablaBitacora">
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <script src="../Scripts/backendService.js"></script>
+    <script src="../Scripts/bitacora.js"></script>
+
+</body>
+</html>
