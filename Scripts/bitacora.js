@@ -22,7 +22,7 @@ function protegerPaginaAdmin() {
 }
 
 document.getElementById("btnVolver").addEventListener("click", function () {
-    window.location.href = "Pages/Home.html";
+    window.location.href = "Home.html";
 });
 
 document.getElementById("btnActualizarBitacora").addEventListener("click", async function () {

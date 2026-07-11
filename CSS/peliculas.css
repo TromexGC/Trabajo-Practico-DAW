@@ -13,6 +13,13 @@ body {
     position: relative;
 }
 
+.movies-header .logo {
+    position: absolute;
+    left: 20px;
+    width: clamp(50px, 8vw, 80px);
+    height: auto;
+}
+
 .movies-header button {
     position: absolute;
     right: 20px;
@@ -45,7 +52,9 @@ body {
 }
 
 .movies-form label {
-    width: 150px;
+    flex: 0 0 auto;
+    width: 35%;
+    max-width: 150px;
     font-weight: bold;
 }
 
