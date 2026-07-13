@@ -1,0 +1,111 @@
+body {
+    background-color: #3f3f3f;
+    font-family: Arial, sans-serif;
+}
+
+.movies-header {
+    background-color: #8b0000;
+    color: black;
+    min-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.movies-header .logo {
+    position: absolute;
+    left: 20px;
+    width: clamp(50px, 8vw, 80px);
+    height: auto;
+}
+
+.movies-header button {
+    position: absolute;
+    right: 20px;
+}
+
+.movies-main {
+    display: block;
+    padding: 30px;
+}
+
+.movies-card {
+    background-color: #a0a0a0;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+}
+
+.movies-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.movies-form .form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.movies-form label {
+    flex: 0 0 auto;
+    width: 35%;
+    max-width: 150px;
+    font-weight: bold;
+}
+
+.movies-form input {
+    flex: 1;
+    padding: 6px;
+}
+
+.movies-form button,
+.movies-card button {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.movies-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    margin-top: 15px;
+}
+
+.movies-table th,
+.movies-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+.movies-table th {
+    background-color: #8b0000;
+    color: white;
+}
+
+.movies-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.user-info {
+    color: white;
+    margin: 20px;
+    font-weight: bold;
+}
+
+.user-info p {
+    margin-bottom: 5px;
+}
+.poster-mini {
+    width: 60px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 4px;
+    background-color: #333;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../CSS/reset.css">
+    <link rel="stylesheet" href="../CSS/display.css">
+    <link rel="stylesheet" href="../CSS/layout.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/responsive.css">
+
+    <link rel="icon" href="../Multimedia/cinetopia-logo.png" type="image/png">
+</head>
+<body>
+    <header>
+        <img src="../Multimedia/cinetopia-logo.png" alt="Logo de Cinetopia" class="logo">
+        <h1>Cinetopia</h1>
+        <div class="sandwitch">
+            <button id="btn-hamburguesa" class="hamburguesa" aria-label="Abrir menú" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav id="menu-lateral" class="menu-lateral">
+                <ul>
+                <li class="solo-admin" hidden>
+                    <a href="bitacora.html">Bitácora</a>
+                </li>
+
+                
+                <li class="solo-admin" hidden><a href="usuarios.html">Gestión de usuarios</a></li>
+                
+                <li class="solo-admin" hidden><a href="peliculas.html">Gestión de películas</a></li>
+
+                <li><a href="#" id="btn-logout">Cerrar sesión</a></li>
+                </ul>
+            </nav>
+
+            <div id="overlay-menu" class="overlay-menu" hidden></div>
+        </div>
+    </header>
+    <main class="home-main">
+
+    <section class="home-welcome">
+        <h2>Bienvenido a Cinetopia</h2>
+        <p>Aca esta la cartelera actual de CINETOPIA</p>
+    </section>
+
+    <section class="home-movies-section">
+        <div class="home-section-header">
+            <h2>Películas disponibles</h2>
+            <button id="btnActualizarHomePeliculas">Actualizar películas</button>
+        </div>
+
+        <div id="homePeliculasContainer" class="home-movies-container">
+        </div>
+    </section>
+
+    </main>
+
+    <div id="movieModalOverlay" class="movie-modal-overlay" hidden>
+        <div class="movie-modal">
+            <button id="movieModalClose" class="movie-modal-close" aria-label="Cerrar">&times;</button>
+            <img id="movieModalPoster" src="" alt="">
+            <div class="movie-modal-content">
+                <h2 id="movieModalTitulo"></h2>
+                <p id="movieModalDescripcion"></p>
+                <p><strong>Género:</strong> <span id="movieModalGenero"></span></p>
+                <p><strong>Director:</strong> <span id="movieModalDirector"></span></p>
+                <p><strong>Año:</strong> <span id="movieModalAnio"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../Scripts/backendService.js"></script>
+    <script src="../Scripts/hamburguesa.js"></script>
+    <script src="../Scripts/home.js"></script>
+</body>
+</html>

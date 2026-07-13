@@ -1,0 +1,123 @@
+
+@media (max-width: 768px) {
+
+   
+    .home-main {
+        padding: 20px;
+    }
+
+    .movies-main {
+        padding: 15px;
+    }
+
+    .home-welcome,
+    .home-movies-section,
+    .movies-card {
+        width: 100%;
+        padding: 18px;
+    }
+
+    /* --- Header --- */
+    header h1 {
+        font-size: clamp(1.2rem, 4vw, 2rem);
+    }
+
+    .movies-header {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 15px 10px;
+        min-height: auto;
+    }
+
+    .movies-header .logo {
+        position: static;
+        width: 50px;
+    }
+
+    .movies-header button {
+        position: static; 
+    }
+
+
+    form {
+        width: 90%;
+        max-width: 400px;
+        padding: 25px;
+        transform: none; 
+        margin: 20px auto;
+    }
+
+  
+    .home-movies-container {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 12px;
+    }
+
+   
+    .movies-form .form-group {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+    }
+
+    .movies-form label {
+        width: 100%;
+        max-width: none;
+    }
+
+   
+    .movies-card:has(.movies-table) {
+        overflow-x: auto;
+    }
+
+    .movies-table {
+        min-width: 600px; 
+    }
+
+  
+    .movie-modal {
+        max-width: 90vw;
+    }
+}
+
+
+
+@media (max-width: 480px) {
+
+    .home-main,
+    .movies-main {
+        padding: 12px;
+    }
+
+    .home-welcome,
+    .home-movies-section,
+    .movies-card {
+        padding: 14px;
+    }
+
+    
+    .home-movies-container {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        gap: 8px;
+    }
+    .home-movie-card-overlay h3 {
+        font-size: 14px;
+    }
+    form {
+        width: 95%;
+        padding: 18px;
+    }
+
+    .movies-form button,
+    .movies-card button {
+        width: 100%;
+    }
+
+    .movie-modal-content h2 {
+        font-size: 1.2rem;
+    }
+
+    .movie-modal img {
+        max-height: 220px;
+    }
+}
